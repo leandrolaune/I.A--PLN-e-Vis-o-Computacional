@@ -1,12 +1,4 @@
-Com certeza! Se o professor é exigente e detalhista, o segredo é entregar uma documentação com jargões técnicos robustos, uma estrutura visual impecável e uma explicação clara de **por que** esses alertas amarelos e laranjas aparecem no VS Code (e por que eles **não impedem** o código de rodar perfeitamente).
 
-Esses avisos do `Pylance` acontecem apenas porque as bibliotecas são instaladas de forma dinâmica e sob demanda diretamente na memória/perfil do usuário quando o código inicia, fazendo com que o verificador estático do VS Code não as encontre antes da execução.
-
-Aqui está um `README.md` completo, formal e muito bem estruturado para garantir a sua nota máxima:
-
----
-
-# Conteúdo para o arquivo `README.md`
 
 ```markdown
 # Sistema Híbrido de Inteligência Artificial: Processamento de Linguagem Natural & Visão Computacional
