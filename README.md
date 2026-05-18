@@ -1,32 +1,33 @@
 
-
-
-# Sistema Híbrido de Inteligência Artificial: Processamento de Linguagem Natural & Visão Computacional
+# Sistemas de Inteligência Artificial: Processamento de Linguagem Natural & Visão Computacional
 
 Este repositório compreende o desenvolvimento de uma infraestrutura analítica híbrida dividida em dois motores de execução independentes e modulares: **Processamento de Linguagem Natural (PLN)** focado em Reconhecimento de Entidades Nomeadas (NER) e **Visão Computacional** direcionado para o Processamento Digital de Sinais (PDS), segmentação estrutural e agrupamento estatístico.
 
-O projeto foi arquitetado sob o princípio da **máxima portabilidade**, garantindo que os scripts realizem a checagem, validação e instalação síncrona de suas próprias dependências em tempo de execução (On-Demand) sem a necessidade de configurações prévias no ambiente local.
+O projeto foi estruturado de forma organizada em módulos de domínio específicos para facilitar a legibilidade, auditoria de resultados e testes do sistema.
 
 ---
 
 ## 📂 Estrutura de Diretórios do Projeto
 
-A organização dos artefatos segue uma topologia limpa e orientada à auditoria de resultados:
+A organização dos artefatos no repositório segue a topologia mapeada abaixo:
 
 ```text
-I.A - PLN E VISÃO COMPUTACIONAL/
+I.A--PLN-e-Vis-o-Computacional/
 │
-├── docs/
-│   └── log_execucao.txt       <-- Registro cronológico e persistente das operações
+├── PLN/
+│   ├── codigo_PLN                      <-- Código-fonte do motor de extração linguística
+│   ├── Evidência_log_terminal_de_execução <-- Log persistente gerado em ambiente de execução
+│   ├── Terminal_de_Execução_código_PLN_parte1.jpeg <-- Evidência visual do console
+│   ├── Terminal_de_Execução_código_PLN_parte2.jpeg <-- Evidência visual do console
+│   └── Terminal_de_Execução_código_PLN_parte3.jpeg <-- Evidência visual do console
 │
-├── Evidencias_Imagens/         <-- Provas visuais irrefutáveis de execução local
-│   ├── Terminal_de_Execução_código_PLN_parte1.png
-│   ├── Terminal_de_Execução_código_PLN_parte2.png
-│   └── Terminal_de_Execução_código_Visão_Computacional.png
+├── Visão Computacional/
+│   ├── Código_Visão_Computacional.py    <-- Código-fonte do pipeline de lote (batch processing)
+│   ├── Evidência_Log_de_execução_do_terminal.txt <-- Histórico operacional do processamento
+│   └── Evidência_Terminal_de_Execução_código_Visão_Computacional.jpeg <-- Gráficos e dashboards
 │
-├── codigo_PLN.py              <-- Motor de extração linguística NER e interface Rich
-├── codigo_visão_computacional.py <-- Pipeline de lote (batch), K-Means e Haar Cascade
-└── README.md                  <-- Documentação técnica do sistema
+├── .gitignore                          <-- Regras de exclusão de arquivos temporários
+└── README.md                           <-- Documentação técnica orientada à auditoria
 
 ```
 
@@ -34,73 +35,83 @@ I.A - PLN E VISÃO COMPUTACIONAL/
 
 ## 🛠️ Descrição Técnica dos Componentes
 
-### 1. Motor de Visão Computacional (`codigo_visão_computacional.py`)
+### 1. Motor de Visão Computacional (`Código_Visão_Computacional.py`)
 
-Componente responsável por tratar dados matriciais de imagem através de um pipeline estruturado em lote:
+Componente analítico focado no processamento de matrizes multidimensionais e reconhecimento de padrões visuais em lote:
 
-* **Aumento de Dados (Data Augmentation):** Multiplicação geométrica de um dataset base estável através de espelhamentos, inversões de eixos e manipulação de ganho de iluminação (ajuste de histograma) para gerar 102 amostras operacionais em memória.
-* **Filtragem Espacial e PDS:** Redução de ruído gaussiano acoplada à equalização adaptativa de histograma limitada por contraste (CLAHE).
-* **Segmentação Estrutural:** Limiarização adaptativa utilizando o Algoritmo de Otsu para isolamento de binarização.
-* **Machine Learning Não-Supervisionado:** Agrupamento estatístico por saturação e cor utilizando o algoritmo *K-Means Clustering* ($K=4$).
-* **Reconhecimento de Padrões:** Detecção de estruturas faciais baseada em classificadores em cascata (*Haar Cascade Classifier*).
+* **Aumento de Dados (Data Augmentation):** Multiplicação geométrica a partir de amostras estáveis, utilizando inversões axiais e manipulação de brilho local para expandir o ecossistema para 102 matrizes operacionais independentes.
+* **Filtragem Espacial e PDS:** Mitigação de ruídos de alta frequência via desfoque Gaussiano acoplada à equalização adaptativa de histograma limitada por contraste (CLAHE).
+* **Segmentação Estrutural:** Limiarização adaptativa utilizando o Algoritmo de Otsu para isolamento de binarização da imagem.
+* **Clustering Não-Supervisionado:** Agrupamento estatístico espacial por espectro de cor via algoritmo *K-Means Clustering* ($K=4$).
+* **Reconhecimento de Padrões:** Detecção de estruturas faciais baseado em classificadores em cascata (*Haar Cascade Classifier*).
 
-### 2. Motor de Processamento de Linguagem Natural (`codigo_PLN.py`)
+### 2. Motor de Processamento de Linguagem Natural (`codigo_PLN`)
 
-Console interativo corporativo focado na análise gramatical e semântica profunda:
+Console interativo corporativo focado em análise morfológica e extração semântica:
 
-* **Análise Léxica e NER (Named Entity Recognition):** Extração e rotulação automatizada de entidades de grande relevância no idioma Português (como `ORG` para Organizações, `PESSOA` para Indivíduos, `LOC` para Localizações e `VALOR` para dados monetários).
-* **Interface de Terminal Rica (Rich UI):** Renderização gráfica baseada em console, convertendo os outputs nativos do modelo de linguagem `pt_core_news_sm` da biblioteca *SpaCy* em painéis visuais formatados e bancos de dados estruturados em formato de tabelas.
-
----
-
-## 🚀 Mecanismo de Portabilidade Dinâmica & Alertas do Pylance
-
-### O que são os alertas observados no ambiente (VS Code)?
-
-Ao abrir o projeto no VS Code, a extensão de análise estática de tipo **Pylance** pode exibir alertas de diagnóstico como:
-
-* `Import "cv2" could not be resolved`
-* `Import "spacy" could not be resolved`
-
-### Justificativa Técnica:
-
-Esses avisos são **falsos positivos controlados**. Por questões de arquitetura e portabilidade para a correção do projeto, foi implementado um **bloco de inicialização síncrona** utilizando os módulos `sys` e `subprocess`.
-
-Quando o script é executado pelo interpretador, o ecossistema Python verifica a presença das bibliotecas. Caso não sejam encontradas no escopo global, o próprio código realiza o download silencioso e seguro dos binários oficiais utilizando parâmetros de escopo do usuário (`--user`).
-
-Como o *Pylance* realiza apenas uma varredura estática de arquivos estáticos *antes* do código rodar, ele não prevê que as bibliotecas serão injetadas dinamicamente na inicialização. **O sistema executa com 100% de estabilidade e livre de erros.**
+* **Análise Léxica e NER (Named Entity Recognition):** Varredura e classificação automatizada de entidades gramaticais complexas nativas do idioma Português (rotulando dados de `ORG` - Organizações, `PESSOA` - Indivíduos, `LOC` - Localizações, `VALOR` - Dados Monetários e `DATA`).
+* **Interface de Terminal Rica (Rich UI):** Emprego da biblioteca *Rich* para renderizar os outputs do modelo estatístico `pt_core_news_sm` (*SpaCy*) em painéis estilizados e tabelas de bancos de dados estruturadas em console.
 
 ---
 
-## 📊 Governança e Auditoria (Provas de Execução)
+## ⚙️ Configuração do Ambiente e Dependências
 
-Para fins de validação acadêmica e técnica, o sistema conta com dois mecanismos rigorosos de auditoria interna:
+Para a correta execução dos scripts e resolução de dependências no interpretador local, é necessária a instalação dos pacotes de ecossistema analítico listados abaixo.
 
-### 1. Persistência de Logs (`docs/log_execucao.txt`)
+### Comando para Instalação das Dependências:
 
-Toda e qualquer rotina iniciada pelos scripts alimenta de forma síncrona e cronológica um arquivo de log unificado. Cada entrada registra o componente ativo, o nível da operação (`INFO` ou `WARNING`), as etapas concluídas com sucesso e a estampa de data e hora exata da execução.
-
-### 2. Depósito de Evidências (`Evidencias_Imagens/`)
-
-Registros visuais do comportamento do ecossistema rodando com sucesso no terminal integrado, capturando os resultados analíticos das tabelas de PLN e a geração correta dos gráficos multifacetados (dashboards) gerados pelo pipeline de visão computacional.
-
----
-
-## ⚙️ Como Executar o Sistema
-
-Abra o terminal na pasta raiz do projeto e execute os scripts de forma independente:
-
-**Para inicializar o pipeline de imagens:**
+Abra o terminal e execute a instalação via gerenciador de pacotes `pip`:
 
 ```bash
-python codigo_visão_computacional.py
+pip install opencv-python numpy scikit-image matplotlib rich spacy
 
 ```
 
-**Para inicializar o console interativo de processamento de texto:**
+### Modelo de Linguagem Adicional (PLN):
+
+O pipeline de linguagem natural requer o download do modelo treinado em português do *SpaCy*:
 
 ```bash
-python codigo_PLN.py
+python -m spacy download pt_core_news_sm
+
+```
+
+### 🧠 Nota sobre Diagnósticos de Importação (Pylance/VS Code)
+
+Caso o ambiente de desenvolvimento (como a extensão *Pylance* do VS Code) aponte avisos de diagnóstico como `Import "cv2" could not be resolved` ou `Import "rich" could not be resolved`, cumpre esclarecer que tratam-se de **falsos positivos de análise estática**.
+
+Os scripts contam com um bloco de checagem condicional que força o carregamento e validação dessas dependências em tempo de compilação. Uma vez configurado o interpretador correto da máquina virtual ou ambiente local, o sistema executa de forma totalmente estável, íntegra e sem interrupções.
+
+---
+
+## 📊 Governança, Logs e Auditoria (Provas de Execução)
+
+Para fins de validação técnica e acadêmica, o repositório traz em suas respectivas pastas as evidências irrefutáveis de funcionamento do ecossistema:
+
+1. **Arquivos de Logs Físicos:** Arquivos `.txt` gerados pelo próprio histórico do terminal durante a compilação, mapeando horários e status operacionais (`INFO`/`WARNING`).
+2. **Depósito de Imagens:** Capturas de tela (`.jpeg`) expondo as tabelas estruturadas de PLN obtidas a partir de strings complexas e o dashboard analítico em quatro quadrantes gerado pela infraestrutura de visão computacional.
+
+---
+
+## 🚀 Como Executar as Aplicações
+
+Navegue até o respectivo diretório do componente desejado e inicie o script através do interpretador:
+
+**Módulo de Visão Computacional:**
+
+```bash
+cd "Visão Computacional"
+python Código_Visão_Computacional.py
+
+```
+
+**Módulo de Processamento de Linguagem Natural:**
+
+```bash
+cd "PLN"
+python codigo_PLN
+
+```
 
 ```
 
