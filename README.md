@@ -1,6 +1,6 @@
 
 
-```markdown
+
 # Sistema Híbrido de Inteligência Artificial: Processamento de Linguagem Natural & Visão Computacional
 
 Este repositório compreende o desenvolvimento de uma infraestrutura analítica híbrida dividida em dois motores de execução independentes e modulares: **Processamento de Linguagem Natural (PLN)** focado em Reconhecimento de Entidades Nomeadas (NER) e **Visão Computacional** direcionado para o Processamento Digital de Sinais (PDS), segmentação estrutural e agrupamento estatístico.
