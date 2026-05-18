@@ -1,0 +1,8 @@
+2026-05-17 21:45:32 - [PLN] - INFO - ====================================================
+2026-05-17 21:45:32 - [PLN] - INFO - INICIANDO CONSOLE DE PROCESSAMENTO DE LINGUAGEM NATURAL
+2026-05-17 21:45:32 - [PLN] - INFO - ====================================================
+2026-05-17 21:45:32 - [PLN] - INFO - Iniciando extração de Entidades Nomeadas (NER) no dataset corporativo padrão...
+2026-05-17 21:45:32 - [PLN] - INFO - Dataset padrão processado. Entidades extraídas com sucesso.
+2026-05-17 22:05:11 - [PLN] - INFO - Texto customizado detectado no prompt de usuário.
+2026-05-17 22:05:11 - [PLN] - INFO - Iniciando varredura NER no texto customizado...
+2026-05-17 22:05:11 - [PLN] - INFO - Processamento do texto customizado concluído com sucesso.
