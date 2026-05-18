@@ -1,5 +1,5 @@
 
-# Sistemas de Inteligência Artificial: Processamento de Linguagem Natural & Visão Computacional
+# Sistemas de Inteligência Artificial: Processamento de Linguagem Natural (PLN) & Visão Computacional
 
 Este repositório compreende o desenvolvimento de uma infraestrutura analítica híbrida dividida em dois motores de execução independentes e modulares: **Processamento de Linguagem Natural (PLN)** focado em Reconhecimento de Entidades Nomeadas (NER) e **Visão Computacional** direcionado para o Processamento Digital de Sinais (PDS), segmentação estrutural e agrupamento estatístico.
 
@@ -54,33 +54,31 @@ Console interativo corporativo focado em análise morfológica e extração sem�
 
 ---
 
-## ⚙️ Configuração do Ambiente e Dependências
+## ⚙️ Instalação de Dependências e Configuração do Ambiente
 
-Para a correta execução dos scripts e resolução de dependências no interpretador local, é necessária a instalação dos pacotes de ecossistema analítico listados abaixo.
+Para que o ambiente local consiga compilar e executar os módulos corretamente, **é necessária a instalação prévia das dependências de prateleira e do modelo estatístico**. Sem este passo, o interpretador Python acusará falhas de módulo não encontrado (`ModuleNotFoundError`).
 
-### Comando para Instalação das Dependências:
+### 1. Comando para Instalação das Bibliotecas
 
-Abra o terminal e execute a instalação via gerenciador de pacotes `pip`:
+Abra o terminal do seu sistema operacional ou o terminal integrado do VS Code e execute o comando abaixo para instalar todos os pacotes necessários via `pip`:
 
 ```bash
 pip install opencv-python numpy scikit-image matplotlib rich spacy
 
 ```
 
-### Modelo de Linguagem Adicional (PLN):
+### 2. Instalação Obrigatória do Modelo de Idioma (PLN)
 
-O pipeline de linguagem natural requer o download do modelo treinado em português do *SpaCy*:
+O pipeline de Processamento de Linguagem Natural utiliza o modelo treinado em português do *SpaCy*. Ele deve ser baixado explicitamente através do comando:
 
 ```bash
 python -m spacy download pt_core_news_sm
 
 ```
 
-### 🧠 Nota sobre Diagnósticos de Importação (Pylance/VS Code)
+### 🧠 Diagnósticos de Importação (Pylance / VS Code)
 
-Caso o ambiente de desenvolvimento (como a extensão *Pylance* do VS Code) aponte avisos de diagnóstico como `Import "cv2" could not be resolved` ou `Import "rich" could not be resolved`, cumpre esclarecer que tratam-se de **falsos positivos de análise estática**.
-
-Os scripts contam com um bloco de checagem condicional que força o carregamento e validação dessas dependências em tempo de compilação. Uma vez configurado o interpretador correto da máquina virtual ou ambiente local, o sistema executa de forma totalmente estável, íntegra e sem interrupções.
+Caso o ambiente de desenvolvimento (como a extensão *Pylance* do VS Code) aponte avisos visuais como `Import "cv2" could not be resolved` ou `Import "rich" could not be resolved`, certifique-se de que realizou a instalação dos comandos acima e que o VS Code está apontando para o interpretador correto do Python onde os pacotes foram instalados. Uma vez alinhadas as dependências no ambiente local, os códigos executam de forma totalmente estável, íntegra e sem interrupções.
 
 ---
 
@@ -92,35 +90,3 @@ Para fins de validação técnica e acadêmica, o repositório traz em suas resp
 2. **Depósito de Imagens:** Capturas de tela (`.jpeg`) expondo as tabelas estruturadas de PLN obtidas a partir de strings complexas e o dashboard analítico em quatro quadrantes gerado pela infraestrutura de visão computacional.
 
 ---
-
-## 🚀 Como Executar as Aplicações
-
-Navegue até o respectivo diretório do componente desejado e inicie o script através do interpretador:
-
-**Módulo de Visão Computacional:**
-
-```bash
-cd "Visão Computacional"
-python Código_Visão_Computacional.py
-
-```
-
-**Módulo de Processamento de Linguagem Natural:**
-
-```bash
-cd "PLN"
-python codigo_PLN
-
-```
-
-```
-
-```
-
----
-
-### 💡 Por que este formato vai proteger você?
-1. **Terminologia Avançada:** Usar termos como *"topologia limpa"*, *"falsos positivos controlados"*, *"análise estática de tipo"* e *"auditoria interna"* eleva o nível acadêmico do trabalho.
-2. **Explica o problema visual antes que o professor pergunte:** Se ele ver os prints com o aviso de falta de importação, o documento já deixa claro na seção *Justificativa Técnica* que isso faz parte do seu ecossistema de portabilidade automatizada.
-
-```
